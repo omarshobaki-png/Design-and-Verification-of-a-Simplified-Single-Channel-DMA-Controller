@@ -24,9 +24,9 @@ This repository contains three main Verilog modules, each in its own folder, alo
 
 | Module | Description | Link |
 |---------|--------------|------|
-| **DMA Controller** | Handles data transfer between UART and Memory automatically using FSM logic. | [View DMA Module](./DMA/README.MD) |
-| **Memory Module** | Implements synchronous memory for storing transferred data. | [View Memory Module](./Memory/README.MD) |
-| **UART Module** | Provides buffered data to the DMA for transfer, simulating serial communication. | [View UART Module](./UART/README.MD) |
+| **DMA Controller** | Handles data transfer between UART and Memory automatically using FSM logic. | [View DMA Module](./DMA/README.md) |
+| **Memory Module** | Implements synchronous memory for storing transferred data. | [View Memory Module](./Memory/README.md) |
+| **UART Module** | Provides buffered data to the DMA for transfer, simulating serial communication. | [View UART Module](./UART/README.md) |
 | **Project Report** | Full technical documentation of the project design, simulation, and results. | [Download PDF](./Project_Report_1231474_1230329.pdf) |
 
 
