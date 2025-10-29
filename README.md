@@ -1,2 +1,67 @@
-# Design-and-Verification-of-a-Simplified-Single-Channel-DMA-Controller
-Contains Verilog-based digital design projects including DMA, Memory, and UART modules with testbenches and report.
+# Verilog Hardware System – DMA, Memory, and UART Modules
+
+**Course:** ENCS3310 – Advanced Digital Systems Design  
+**Project Title:** Design and Verification of a Simplified Single-Channel DMA Controller for UART-to-Memory Data Transfer  
+**Prepared by:**  
+- Saifeddin Saleh — 1231474  
+- Omar Shoubaki — 1230329  
+**Instructor:** Dr. Ayman Hroub  
+**Date:** 12/8/2025  
+
+## Project Overview
+This project implements and verifies a simplified single-channel Direct Memory Access (DMA) controller that transfers data from a UART peripheral to memory without continuous CPU supervision.  
+All modules were designed and simulated in Verilog, following a modular hardware architecture that includes:
+- A simplified UART module (data source)  
+- A Memory module (data destination)  
+- A DMA controller that handles data movement automatically  
+
+Each module is verified with an individual testbench and observed using ModelSim simulation waveforms.
+
+## System Architecture
+The design consists of three main Verilog components working together:
+
+### 1. UART Module
+A simplified UART providing buffered byte access instead of full serial transmission.  
+When the DMA asserts the read enable signal, the UART outputs the next byte after one clock cycle.  
+This design eliminates baud rate and framing complexity, focusing on reliable data delivery.
+
+### 2. Memory Module
+Implements synchronous read and write behavior.  
+It stores data transferred from UART through the DMA controller and allows flexible parameterization for data and address widths.
+
+### 3. DMA Controller
+A hardware unit designed with a finite-state machine (FSM) that autonomously transfers data from UART to Memory.  
+The DMA:
+- Reads data from UART when available  
+- Writes to sequential memory addresses  
+- Tracks remaining transfer size  
+- Asserts a done signal when the transfer completes  
+
+## Simulation and Verification
+Each module includes its own testbench:
+- `uart_tb.v` – verifies buffered byte output behavior  
+- `memory_tb.v` – validates memory read/write functionality  
+- `dma_tb.v` – simulates the full UART-to-Memory data transfer sequence  
+
+Simulation waveforms confirm:
+- Correct timing between read and write operations  
+- Accurate data transfer from UART to memory  
+- Proper signaling of the done flag after all bytes are moved  
+
+## File Structure
+
+Each folder contains the Verilog design, its corresponding testbench, and a local README describing the module and simulation details.
+
+## Tools Used
+- Intel Quartus Prime – HDL design and compilation  
+- ModelSim – Simulation and waveform analysis  
+- Logisim – (Optional) for logic visualization  
+
+## Results
+- The integrated system successfully transfers data from UART to memory automatically.  
+- Simulation confirmed correct timing, sequencing, and data integrity.  
+- The done signal asserted correctly upon completion of data transfer, indicating proper FSM operation.  
+
+## Conclusion
+The project demonstrates a functional and efficient hardware-based data transfer system that reduces CPU load and ensures predictable timing.  
+By combining UART, Memory, and DMA modules into one cohesive design, it highlights the value of modular Verilog development, FSM control logic, and simulation-driven verification in advanced digital systems design.
